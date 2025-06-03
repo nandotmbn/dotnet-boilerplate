@@ -1,0 +1,88 @@
+version: '3.4'
+
+services:
+  psqldev:
+    image: psqldev
+    build:
+      context: .
+      dockerfile: ./Dockerfile.Development
+    ports:
+      - 4810:5432
+    volumes:
+      - pg_data_dev:/var/lib/postgresql/data
+
+  psqldev1:
+    image: psqldev1
+    build:
+      context: .
+      dockerfile: ./Dockerfile.Development
+    ports:
+      - 4811:5432
+    volumes:
+      - pg_data_dev1:/var/lib/postgresql/data
+  
+  psqldev2:
+    image: psqldev2
+    build:
+      context: .
+      dockerfile: ./Dockerfile.Development
+    ports:
+      - 4812:5432
+    volumes:
+      - pg_data_dev2:/var/lib/postgresql/data
+  
+  psqldev3:
+    image: psqldev3
+    build:
+      context: .
+      dockerfile: ./Dockerfile.Development
+    ports:
+      - 4813:5432
+    volumes:
+      - pg_data_dev3:/var/lib/postgresql/data
+  
+  psqldev4:
+    image: psqldev4
+    build:
+      context: .
+      dockerfile: ./Dockerfile.Development
+    ports:
+      - 4814:5432
+    volumes:
+      - pg_data_dev4:/var/lib/postgresql/data
+
+  redisdev:
+    image: redis:latest
+    ports:
+      - "4820:6379"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+        reservations:
+          memory: 512m
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data_dev:/data
+
+  rabbitmqdev:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - "4830:5672"   # RabbitMQ AMQP protocol port
+      - "14830:15672" # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: gyzahadmin
+      RABBITMQ_DEFAULT_PASS: Gyz4ahAdmeen
+    volumes:
+      - rabbitmq_data_dev:/var/lib/rabbitmq
+
+volumes:
+  pg_data_dev:
+  pg_data_dev1:
+  pg_data_dev2:
+  pg_data_dev3:
+  pg_data_dev4:
+  redis_data_dev:
+  rabbitmq_data_dev:

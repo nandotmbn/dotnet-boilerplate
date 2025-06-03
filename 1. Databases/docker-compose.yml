@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  psql:
+    image: psql
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 21601:21601
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  redisprod:
+    image: redis:latest
+    ports:
+      - "6380:6379"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+        reservations:
+          memory: 512m
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+
+volumes:
+  pg_data:
+  redis-data:
