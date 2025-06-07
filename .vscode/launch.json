@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Run all",
+            "configurations": [
+                "Run products",
+                "Run store",
+            ]
+        }
+    ],
+    "configurations": [
+        {
+            "name": "Run products",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\Products\\Products.csproj"
+        },
+        {
+            "name": "Run store",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\Store\\Store.csproj"
+        }
+    ]
+}

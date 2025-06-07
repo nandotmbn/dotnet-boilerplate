@@ -9,17 +9,17 @@ fi
 # Arguments
 VERSION="$1"
 
-cd WebAPI
+cd '5. WebAPI'
 dotnet ef migrations add $VERSION
 dotnet ef database update
-sed -i.bak 's/"0": "Server=host.docker.internal;PORT=4810/"0": "Server=host.docker.internal;PORT=4811/g' appsettings.Development.json
+sed -i.bak 's/"0": "Server=localhost;PORT=4810/"0": "Server=localhost;PORT=4811/g' appsettings.Development.json
 dotnet ef database update
-sed -i.bak 's/"0": "Server=host.docker.internal;PORT=4811/"0": "Server=host.docker.internal;PORT=4812/g' appsettings.Development.json
+sed -i.bak 's/"0": "Server=localhost;PORT=4811/"0": "Server=localhost;PORT=4812/g' appsettings.Development.json
 dotnet ef database update
-sed -i.bak 's/"0": "Server=host.docker.internal;PORT=4812/"0": "Server=host.docker.internal;PORT=4813/g' appsettings.Development.json
+sed -i.bak 's/"0": "Server=localhost;PORT=4812/"0": "Server=localhost;PORT=4813/g' appsettings.Development.json
 dotnet ef database update
-sed -i.bak 's/"0": "Server=host.docker.internal;PORT=4813/"0": "Server=host.docker.internal;PORT=4814/g' appsettings.Development.json
+sed -i.bak 's/"0": "Server=localhost;PORT=4813/"0": "Server=localhost;PORT=4814/g' appsettings.Development.json
 dotnet ef database update
-sed -i.bak 's/"0": "Server=host.docker.internal;PORT=4814/"0": "Server=host.docker.internal;PORT=4810/g' appsettings.Development.json
+sed -i.bak 's/"0": "Server=localhost;PORT=4814/"0": "Server=localhost;PORT=4810/g' appsettings.Development.json
 rm appsettings.Development.json.bak
 cd ..

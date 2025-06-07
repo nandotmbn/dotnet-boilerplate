@@ -2,6 +2,7 @@ using Infrastructure.Services;
 using GraphQL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddServiceDefaults();
 
 // Add Database Service with PostgreSQL sharding
 builder.Services.DatabaseServices(builder.Configuration);
@@ -14,5 +15,6 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapGraphQL();
+app.MapDefaultEndpoints();
 
 app.Run();

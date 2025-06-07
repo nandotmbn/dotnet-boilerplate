@@ -36,12 +36,12 @@ setup_database() {
 # Set up the databases
 
 PORT=5432
-setup_database database databases-psqldev-1
+setup_database database 1databases-psqldev-1
 
-setup_database database databases-psqldev1-1
+setup_database database 1databases-psqldev1-1
 
-setup_database database databases-psqldev2-1
+setup_database database 1databases-psqldev2-1
 
-setup_database database databases-psqldev3-1
+setup_database database 1databases-psqldev3-1
 
-setup_database database databases-psqldev4-1
+setup_database database 1databases-psqldev4-1

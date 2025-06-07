@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="../2. Domain/Domain.csproj" />
     <ProjectReference Include="../3. Infrastructure/Infrastructure.csproj" />
+    <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

@@ -32,8 +32,6 @@ namespace Infrastructure.Services
 			services.AddDbContext<AppDBContext>((serviceProvider, options) =>
 				{
 					var shard = serviceProvider.GetRequiredService<IShardSelector>().GetCurrentShard();
-					Console.Write("Shard : ");
-					Console.WriteLine(ShardConfig.Shards[shard]);
 					options.UseNpgsql(ShardConfig.Shards[shard], b => b.MigrationsAssembly("WebAPI"));
 				},
 				ServiceLifetime.Scoped

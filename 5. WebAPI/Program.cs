@@ -4,6 +4,8 @@ using WebAPI.Middlewares;
 using WebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddServiceDefaults();
+
 builder.Services.AddOpenApi();
 builder.Services.AddCors(options =>
 				{
@@ -37,6 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+app.MapDefaultEndpoints();
 
 app.UseMiddleware<TransactionRollbackMiddleware>();
 app.Run();
