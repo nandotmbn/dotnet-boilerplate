@@ -7,14 +7,54 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 21601:21601
+      - 4610:5432
     volumes:
       - pg_data:/var/lib/postgresql/data
 
-  redisprod:
+  psql1:
+    image: psql1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 4611:5432
+    volumes:
+      - pg_data1:/var/lib/postgresql/data
+  
+  psql2:
+    image: psql2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 4612:5432
+    volumes:
+      - pg_data2:/var/lib/postgresql/data
+  
+  psql3:
+    image: psql3
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 4613:5432
+    volumes:
+      - pg_data3:/var/lib/postgresql/data
+  
+  psql4:
+    image: psql4
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 4614:5432
+    volumes:
+      - pg_data4:/var/lib/postgresql/data
+
+  redis:
     image: redis:latest
     ports:
-      - "6380:6379"
+      - "4620:6379"
     restart: always
     deploy:
       resources:
@@ -24,8 +64,25 @@ services:
           memory: 512m
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - redis-data:/data
+      - redis_data:/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - "4630:5672"   # RabbitMQ AMQP protocol port
+      - "14630:15672" # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitboilerplateuser
+      RABBITMQ_DEFAULT_PASS: rabbitboilerplatepassword
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
 
 volumes:
   pg_data:
-  redis-data:
+  pg_data1:
+  pg_data2:
+  pg_data3:
+  pg_data4:
+  redis_data:
+  rabbitmq_data:
