@@ -7,17 +7,11 @@ public static class QueryContainer
 {
   public static IServiceCollection QueryService(this IServiceCollection services, IConfiguration configuration)
   {
-    // services
-    //   .AddGraphQLServer()
-    //   .AddQueryType<UserQuery>()
-    //   .AddProjections()
-    //   .AddFiltering()
-    //   .AddSorting()
-    //   .AddDbContextCursorPagingProvider();
-
     services
       .AddGraphQLServer()
-      .AddQueryType<UserShardQuery>()
+      .AddQueryType<Query>()
+      .AddTypeExtension<UserQuery>()
+      // .AddTypeExtension<UserShardQuery>()
       .AddProjections()
       .AddFiltering()
       .AddSorting()

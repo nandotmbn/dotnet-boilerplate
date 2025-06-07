@@ -4,23 +4,23 @@
         {
             "name": "Run all",
             "configurations": [
-                "Run products",
-                "Run store",
+                "Run graphql",
+                "Run webapi",
             ]
         }
     ],
     "configurations": [
         {
-            "name": "Run products",
+            "name": "Run graphql",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}\\Products\\Products.csproj"
+            "projectPath": "${workspaceFolder}\\4. GraphQL\\GraphQL.csproj"
         },
         {
-            "name": "Run store",
+            "name": "Run webapi",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}\\Store\\Store.csproj"
+            "projectPath": "${workspaceFolder}\\5. WebAPI\\WebAPI.csproj"
         }
     ]
 }

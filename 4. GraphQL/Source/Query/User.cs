@@ -1,14 +1,18 @@
 using Domain.Models;
+using GraphQL.Middlewares;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.Source;
+
+[ExtendObjectType(typeof(Query))]
 public class UserQuery
 {
 	[UsePaging]
 	[UseProjection]
 	[UseFiltering]
 	[UseSorting]
+	[QueryAuthorize] // Custom authorization middleware
 	public IQueryable<User> GetUsers(AppDBContext context) => context.Users;
 
 	[UseProjection]
